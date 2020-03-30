@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 class IndexControllerTest {
 
@@ -48,5 +49,16 @@ class IndexControllerTest {
     void testTimeOutPreemptively() {
         assertTimeoutPreemptively(Duration.ofMillis(100),
                 () -> Thread.sleep(2000));
+    }
+
+
+    @Test
+    void testAssumptionTrue() {
+        assumeTrue("INCE".equalsIgnoreCase(System.getenv("INCE_RUNTIME")));
+    }
+
+    @Test
+    void testAssumptionIsTrue() {
+        assumeTrue("INCE".equalsIgnoreCase("INCE"));
     }
 }
